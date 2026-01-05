@@ -1,6 +1,7 @@
 package com.study.kopringjwt.global.auth.exception
 
 import com.study.kopringjwt.global.exception.CustomException
+import com.study.kopringjwt.global.exception.ErrorResponseSender
 import jakarta.servlet.FilterChain
 import jakarta.servlet.http.HttpServletRequest
 import jakarta.servlet.http.HttpServletResponse
