@@ -1,6 +1,6 @@
 package com.study.kopringjwt.global.config
 
-import com.study.kopringjwt.global.auth.exception.ErrorResponseSender
+import com.study.kopringjwt.global.exception.ErrorResponseSender
 import com.study.kopringjwt.global.auth.exception.JwtErrorCode
 import com.study.kopringjwt.global.auth.exception.JwtExceptionFilter
 import com.study.kopringjwt.global.auth.jwt.JwtAuthenticationFilter
@@ -14,7 +14,6 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.web.cors.CorsConfiguration
 import org.springframework.web.cors.CorsConfigurationSource
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource
-import kotlin.jvm.java
 
 @Configuration
 @EnableWebSecurity
@@ -33,7 +32,7 @@ class SecurityConfig(
             .sessionManagement { it.sessionCreationPolicy(SessionCreationPolicy.STATELESS) }
             .authorizeHttpRequests {
                 it
-                    .requestMatchers("/user/register", "/user/login", "/user/refresh").permitAll()
+                    .requestMatchers("/v1/user/register", "/v1/user/login", "/v1/user/refresh").permitAll()
                     .anyRequest().authenticated()
             }
             .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter::class.java)
